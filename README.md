@@ -27,7 +27,32 @@ A comprehensive benchmarking suite for comparing Redis vs Memcached performance 
 
 ## Installation
 
-### Prerequisites
+### Option 1: Docker (Recommended)
+
+**Prerequisites:**
+- Docker 20.10+ with Docker Compose 2.0+
+
+**Quick Setup:**
+```bash
+# Clone and run
+git clone <repository-url>
+cd cache-benchmark
+make up
+
+# Or use docker-compose directly
+docker-compose --profile benchmark up --build
+```
+
+**Docker Features:**
+- ✅ Pre-configured PHP environment with all extensions
+- ✅ Redis and Memcached servers included
+- ✅ Web interface for viewing results
+- ✅ Development environment with hot reload
+- ✅ Consistent environment across all systems
+
+### Option 2: Local Installation
+
+**Prerequisites:**
 
 1. **PHP 8.0+** with the following extensions:
    - `ext-redis`
@@ -38,7 +63,7 @@ A comprehensive benchmarking suite for comparing Redis vs Memcached performance 
 2. **Redis Server** (running on default port 6379)
 3. **Memcached Server** (running on default port 11211)
 
-### Setup
+**Setup:**
 
 1. **Clone the repository:**
    ```bash
@@ -53,7 +78,7 @@ A comprehensive benchmarking suite for comparing Redis vs Memcached performance 
 
 3. **Configure the environment:**
    ```bash
-   cp env.example .env
+   cp .env.example .env
    # Edit .env with your Redis and Memcached connection details
    ```
 
@@ -64,14 +89,54 @@ A comprehensive benchmarking suite for comparing Redis vs Memcached performance 
 
 ## Usage
 
-### Basic Usage
+### Docker Usage
+
+**Quick Commands:**
+```bash
+# Run full benchmark suite
+make benchmark
+
+# Start development environment
+make dev
+
+# Start with web interface
+make web
+
+# Quick test
+make quick
+
+# View logs
+make logs
+
+# Access shell
+make shell
+```
+
+**Docker Compose Commands:**
+```bash
+# Production benchmark
+docker-compose --profile benchmark up --build
+
+# Development environment
+docker-compose --profile dev up --build
+
+# With web interface
+docker-compose --profile benchmark --profile web up --build
+
+# Run custom benchmark
+docker-compose exec app php bin/benchmark.php --iterations=1000 --concurrent=20
+```
+
+### Local Usage
+
+**Basic Usage:**
 
 Run the benchmark with default settings:
 ```bash
 php bin/benchmark.php
 ```
 
-### Advanced Usage
+**Advanced Usage:**
 
 Run with custom parameters:
 ```bash
