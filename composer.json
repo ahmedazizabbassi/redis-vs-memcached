@@ -1,0 +1,32 @@
+{
+    "name": "cache-benchmark/redis-memcached-comparison",
+    "description": "Comprehensive benchmarking tool for Redis vs Memcached performance comparison",
+    "type": "project",
+    "require": {
+        "php": ">=8.0",
+        "ext-redis": "*",
+        "ext-memcached": "*",
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "monolog/monolog": "^3.0",
+        "symfony/console": "^6.0",
+        "vlucas/phpdotenv": "^5.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "CacheBenchmark\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "CacheBenchmark\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "benchmark": "php bin/benchmark.php",
+        "test": "phpunit"
+    }
+}
